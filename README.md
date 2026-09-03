@@ -1,77 +1,70 @@
 # Event-Driven Music Data Pipeline
 
-**Status:** In Development
+**Status:** Em desenvolvimento local
 
 ## Objective
 
-This is a data engineering project focused on organizing and, in future phases, analyzing musical data. The repository is currently structural only: datasets will be added manually and no ingestion, processing, or analytical execution is implemented.
+Projeto local de engenharia de dados para análise de dados musicais. Os CSVs são adicionados manualmente e percorrem as camadas da arquitetura Medalhão.
 
 ## Context
 
-The project will work with two planned data sources: **Spotify Music Dataset** and **Music Features**. Their files, schemas, and data characteristics will be documented after manual addition and exploration.
+As fontes atuais são o **Spotify Music Dataset** e o **Music Features**. Os arquivos de origem são preservados na camada Bronze.
 
-## Architecture Target
+## Arquitetura Medalhão
 
 ```mermaid
 flowchart TD
-    A[Kaggle / Data Sources] --> B[Ingestion]
-    B --> C[Raw]
+    A[Fontes de dados] --> B[Ingestion]
+    B --> C[Bronze]
     C --> D[Processing]
-    D --> E[Curated]
-    E --> F[Analytics]
-    F --> G[Power BI]
-    H[AWS / Snowflake] -. Future implementation .-> D
+    D --> E[Silver]
+    E --> F[Processing / Python]
+    F --> G[Gold]
+    G --> H[Power BI]
 ```
 
-The target flow separates source data, ingestion, processing, storage layers, analytical consumption, and visualization. AWS and Snowflake are future architecture options, not active integrations.
+Bronze preserva os dados recebidos. Silver concentra dados tratados e validados. Gold contém dados preparados para consumo analítico. Essas etapas ainda serão implementadas incrementalmente.
 
 ## Planned Data Sources
 
 - Spotify Music Dataset
 - Music Features
 
-The CSV files will be supplied manually. No datasets are included in this repository.
+Os CSVs são fornecidos manualmente em `data/bronze/`.
 
 ## Project Structure
 
 ```text
-data/          Raw, curated, and analytics data locations
-ingestion/     Future data entry workflows
-processing/    Future validation and transformation areas
-storage/       Storage documentation and local conventions
-analytics/     Future SQL and DuckDB analytical work
-dbt/           Future analytical transformations
-powerbi/       Future visualization assets
-tests/         Unit, integration, and data quality tests
-docs/          Technical documentation
-scripts/       Future exploration and validation helpers
-architecture/  Target architecture diagram
+architecture/  Diagramas e representações da arquitetura
+data/          Camadas Bronze, Silver e Gold
+ingestion/     Código de entrada dos dados
+processing/    Processamento entre as camadas
+analytics/     Consultas e análises
+processing/    Transformações Python entre as camadas
+powerbi/       Artefatos do Power BI
+docs/          Documentação técnica
+scripts/       Scripts auxiliares com função real
 ```
 
 ## Planned Technologies
 
 | Technology | Planned purpose |
 | --- | --- |
-| Python | Future automation and processing |
-| CSV | Manually supplied source format |
-| DuckDB | Future local analytical exploration |
-| dbt | Future analytical transformations |
-| Power BI | Future visualization |
-| AWS / Snowflake | Future cloud architecture options |
+| Python | Automação e processamento local |
+| CSV | Formato das fontes fornecidas manualmente |
+| DuckDB | Exploração analítica local |
+| Python | Processamento e transformações |
+| Power BI | Visualização |
 
 ## Roadmap
 
-1. Add the datasets manually.
-2. Document source structure and provenance.
-3. Define validation rules.
-4. Implement ingestion and processing incrementally.
-5. Add analytical SQL, DuckDB, and dbt models.
-6. Define Power BI consumption requirements.
-7. Evaluate future cloud, orchestration, and CI/CD components.
+1. Adicionar os datasets manualmente na camada Bronze.
+2. Implementar ingestão e processamento incrementalmente.
+3. Definir regras de validação para a camada Silver.
+4. Adicionar modelos analíticos na camada Gold.
+5. Definir o consumo pelo Power BI.
 
 ## Current Limitations
 
-- No CSV or other dataset files are included.
-- No profiling, transformations, pipeline functions, downloads, cloud integrations, Snowflake objects, or dashboards are implemented.
-- Dependencies are intentionally not defined until implementation begins.
-- Documentation contains placeholders where dataset-specific information is required.
+- Não há infraestrutura AWS, Snowflake ou outro serviço pago.
+- A reorganização não altera os dados nem executa ETL ou profiling.

@@ -1,5 +1,9 @@
 # Data
 
-**Status:** Empty structure only.
+Os dados seguem a arquitetura Medalhão:
 
-The Spotify Music Dataset and Music Features files will be added manually. No CSVs are included, downloaded, copied, or inspected by this restructuring task. Raw, Curated, and Analytics files are ignored by Git; `.gitkeep` preserves their directories.
+- `bronze/`: arquivos recebidos manualmente, preservados sem transformação;
+- `silver/`: dados tratados e validados;
+- `gold/`: dados preparados para consumo analítico.
+
+Os CSVs atuais estão em `bronze/` e não são alterados durante reorganizações estruturais.

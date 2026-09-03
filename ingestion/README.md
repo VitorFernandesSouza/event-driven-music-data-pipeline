@@ -1,3 +1,3 @@
 # Ingestion
 
-This area is reserved for future data entry workflows. Dataset files will be added manually to `data/raw/`; no ingestion implementation exists yet.
+Dataset files are added manually to `data/bronze/`; no ingestion implementation exists yet.

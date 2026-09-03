@@ -1,21 +1,29 @@
-# Planned Architecture
+# Arquitetura Medalhão
 
-**Purpose:** Document the target organization of the platform.
+O projeto utiliza uma organização local em camadas:
 
-**Status:** Initial structure only. This document will be expanded in future implementation phases.
+```text
+Fonte de dados
+	↓
+Ingestion
+	↓
+data/bronze
+	↓
+Processing
+	↓
+data/silver
+	↓
+Processing / Python
+	↓
+data/gold
+	↓
+Power BI
+```
 
-The current implementation target is local. AWS and Snowflake are future architecture options and are not part of the active repository structure.
+## Camadas
 
-| Component | Planned responsibility |
-| --- | --- |
-| Public sources | Provide music-related files; exact sources are to be defined. |
-| S3 Raw | Retain source inputs in the data lake. |
-| S3 ObjectCreated | Emit an event for new objects. |
-| Lambda | Inspect the event and initiate processing. |
-| AWS Glue/PySpark | Validate, transform, and classify input data. |
-| S3 Curated | Store validated downstream-ready data. |
-| Snowflake | Provide warehouse storage and query access. |
-| dbt | Build analytical transformations and tests. |
-| Power BI | Consume analytical models for reporting. |
+- **Bronze:** preserva os arquivos recebidos, sem transformações de negócio.
+- **Silver:** receberá dados tratados, padronizados e validados.
+- **Gold:** receberá datasets preparados para análises e indicadores.
 
-Implementation details, permissions, retries, and infrastructure provisioning remain planned.
+O armazenamento e o processamento são locais nesta etapa. AWS, Snowflake e outros serviços pagos não fazem parte do projeto atual.

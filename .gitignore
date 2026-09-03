@@ -1,10 +1,5 @@
-# Datasets: preserve folders with .gitkeep, never version data files.
-data/raw/*
-data/curated/*
-data/analytics/*
-!data/raw/.gitkeep
-!data/curated/.gitkeep
-!data/analytics/.gitkeep
+# Datasets added manually to the Bronze layer are kept out of future commits.
+data/bronze/*
 
 # Python and environments
 __pycache__/
@@ -30,17 +25,11 @@ aws-credentials*
 .DS_Store
 Thumbs.db
 
-# Cloud, dbt, generated, temporary, and logs
-.aws-sam/
-.terraform/
-terraform.tfstate*
-dbt_packages/
-target/
+# Generated, temporary, and logs
 logs/
 *.log
 *.tmp
 *.temp
-*.csv
 *.parquet
 *.json
 *.zip
