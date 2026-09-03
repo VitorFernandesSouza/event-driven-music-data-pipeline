@@ -1,0 +1,47 @@
+# Datasets: preserve folders with .gitkeep, never version data files.
+data/raw/*
+data/curated/*
+data/analytics/*
+!data/raw/.gitkeep
+!data/curated/.gitkeep
+!data/analytics/.gitkeep
+
+# Python and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Environment, credentials, and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+aws-credentials*
+
+# IDE and operating system
+.vscode/*
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Cloud, dbt, generated, temporary, and logs
+.aws-sam/
+.terraform/
+terraform.tfstate*
+dbt_packages/
+target/
+logs/
+*.log
+*.tmp
+*.temp
+*.csv
+*.parquet
+*.json
+*.zip
+
